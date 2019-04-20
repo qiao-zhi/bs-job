@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8"/>
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/font.css'}"/>
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/xadmin.css'}"/>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/lib/layui/layui.js'}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/js/xadmin.js'}"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+  <body>
+    <div class="x-body layui-anim layui-anim-up">
+        <form class="layui-form">
+        
+       	  <input type="hidden" th:field="${seeker.id}"/>
+          <input type="hidden" name="filepath" th:field="${seeker.filepath}"/>
+       	  <div class="layui-form-item">
+              <label for="L_username" class="layui-form-label">
+                  <span class="x-red">*</span>用户名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_username" name="username" lay-verify="required"
+                  autocomplete="off" class="layui-input" readonly="readonly" th:value="${seeker.username}"/>
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <label for="L_fullname" class="layui-form-label">
+                  <span class="x-red">*</span>用户姓名
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_fullname" readonly="readonly" name="fullname" lay-verify="required"
+                  autocomplete="off" class="layui-input" th:value="${seeker.fullname}"/>
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_sex" class="layui-form-label">
+                  <span class="x-red">*</span>用户性别
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_sex" name="sex" readonly="readonly" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" th:value="${seeker.sex}"/>
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>E-mail
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_email" name="email"  required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" readonly="readonly" th:value="${seeker.email}"/>
+              </div>
+          </div>
+          <div class="layui-form-item">
+                <label for="L_phone" class="layui-form-label">
+                    <span class="x-red">*</span>手机号
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_phone" name="phone"  required="" lay-verify="required"
+                           autocomplete="off" class="layui-input" th:value="${seeker.phone}"/>
+                </div>
+           </div>
+           <div class="layui-form-item">
+                <label for="L_address" class="layui-form-label">
+                    <span class="x-red">*</span>用户住址
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_address" name="address"  required="" lay-verify="required"
+                           autocomplete="off" class="layui-input" th:value="${seeker.address}" readonly="readonly"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_school" class="layui-form-label">
+                    <span class="x-red">*</span>毕业院校
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_school" name="school"  required="" lay-verify="required"
+                           autocomplete="off" class="layui-input" th:value="${seeker.school}" readonly="readonly"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_targetjob" class="layui-form-label">
+                    <span class="x-red">*</span>目标岗位
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_targetjob" name="targetjob"  required="" lay-verify="required"
+                           autocomplete="off" class="layui-input" th:value="${seeker.targetjob}" readonly="readonly"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_workexperience" class="layui-form-label">
+                    <span class="x-red">*</span>工作经验
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_workexperience" name="workexperience" required="" lay-verify="required"
+                           autocomplete="off" class="layui-input" th:value="${seeker.workexperience}" readonly="readonly"/>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label for="L_projectintruction" class="layui-form-label">
+                    <span class="x-red">*</span>项目介绍
+                </label>
+                <div class="layui-input-block">
+                    <textarea id="L_projectintruction" name="projectintruction" required=""
+                              lay-verify="required" autocomplete="off"
+                              class="layui-textarea" th:text="${seeker.projectintruction}"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label for="L_evaluation" class="layui-form-label">
+                    <span class="x-red">*</span>自我评价
+                </label>
+                <div class="layui-input-block">
+                    <textarea id="L_evaluation" name="evaluation" required=""
+                              lay-verify="required" autocomplete="off"
+                              class="layui-textarea"  th:text="${seeker.evaluation}" readonly="readonly"></textarea>
+                </div>
+            </div>
+      </form>
+    </div>
+
+  </body>
+</html>

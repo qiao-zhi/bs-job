@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>招聘网</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/favicon.ico'}" type="image/x-icon" />
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/font.css'}"/>
+	<link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/xadmin.css'}"/>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/js/jquery.min.js'}"></script>
+    <script th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/lib/layui/layui.js'}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/js/xadmin.js'}"></script>
+    
+    <!--自己写的JS  -->
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/PublicFunctions.js'}"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/seekerIndex.js'}"></script>
+</head>
+<body>
+<!-- 顶部开始 -->
+<div class="container">
+    <div class="logo"><a href="./index.html">招聘网</a></div>
+    <ul class="layui-nav right" lay-filter="">
+        <li class="layui-nav-item">
+            <a href="javascript:;" th:text="${session.user.fullname}">admin</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                <!--  <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
+                 <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd> -->
+                <dd><a href="/logout.html"  th:href="${#httpServletRequest.getContextPath()+'/logout.html'}">退出</a></dd>
+                <dd><a href="javascript:void(0)"  onclick="updateUser();">账户维护</a></dd>
+                <dd><a href="javascript:void(0)"  onclick="updateSeekerUser();">个人简历</a></dd>
+                <dd th:if="${session.seeker.filepath} ==null or ${session.seeker.filepath} == ''"><a href="javascript:void(0)"  onclick="showFile();">上传附件简历</a></dd>
+                <dd th:if="${session.seeker.filepath} != null and ${session.seeker.filepath} ne ''"><a href="javascript:void(0)"  onclick="getSeekerFile();">查看附件简历</a></dd>
+            </dl>
+        </li>
+        <!-- <li class="layui-nav-item to-index"><a href="/preIndex.html">前台首页</a></li> -->
+    </ul>
+
+</div>
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<!-- 右侧主体开始 -->
+<div class="content" style="width: 100%;">
+
+    <div class="x-body">
+        <div class="layui-row">
+            <form class="layui-form layui-col-md12 x-so" id="queryUserForm">
+                <!--隐藏当前页和页号-->
+                <input type="hidden" name="pageNum"/>
+                <input type="hidden" name="pageNum"/>
+                <input type="hidden" name="from" value="seeker"/>
+            </form>
+        </div>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>岗位名称</th>
+                <th>描述</th>
+                <th>所需人数</th>
+                <th>发布时间</th>
+                <th>发布人</th>
+                <th>发布公司</th>
+                <th>联系人</th>
+                <th>联系人电话</th>
+                <th>操作</th></tr>
+            </thead>
+            <tbody id="memberTbody">
+            </tbody>
+        </table>
+
+        <!--分页-->
+        <div id="pageDiv"></div>
+        <!--end 分页-->
+
+    </div>
+
+</div>
+<div class="page-content-bg"></div>
+<!-- 右侧主体结束 -->
+<!-- 中部结束 -->
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="copyright">Copyright ©2019 qs All Rights Reserved</div>
+</div>
+<!-- 底部结束 -->
+</body>
+</html>
