@@ -103,7 +103,7 @@ function clearQueryCondition(obj) {
 function deleteUser(id){
 	var layer = layui.layer;
 	layer.confirm('确认删除?', function(index){
-		$.post("/job/deleteJob.html",{"id":id},function(result){
+		$.post("/message/deleteMessage.html",{"id":id},function(result){
 			if(result.success == true){
 				layer.msg("删除成功!");
 				queryUsersFY();
@@ -116,6 +116,6 @@ function deleteUser(id){
 }
 
 function updateUser(id){
-	var url = '/job/updateJob.html?id='+id;
+	var url = '/message/updateMessage.html?id='+id;
 	x_admin_show('修改',url,1000,400);
 }
