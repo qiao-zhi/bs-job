@@ -59,8 +59,8 @@
           <div class="layui-form-item">
 		    <label class="layui-form-label">类型</label>
 		    <div class="layui-input-block">
-                <input type="radio" name="usertype" value="1" title="管理员" checked="checked"/>
-                <input type="radio" name="usertype" value="2" title="个人"/>
+                <input type="radio" name="usertype" value="1" title="管理员" th:if="${from} ne 'register'"/>
+                <input type="radio" name="usertype" value="2" title="个人" checked="checked"/>
                 <input type="radio" name="usertype" value="3" title="企业"/>
 		    </div>
 		  </div>

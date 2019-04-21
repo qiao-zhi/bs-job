@@ -63,26 +63,21 @@ public class JobController {
 	@RequestMapping("getJobs")
 	@ResponseBody
 	public Page<Job> getJobs(@RequestParam Map condition,HttpServletRequest request) {
-		condition.put("username",((User) request.getSession().getAttribute("user")).getUsername());
+		String usertype = ((User) request.getSession().getAttribute("user")).getUsertype();
+		if(DefaultValue.JOB_USER.equals(usertype)){
+			condition.put("username",((User) request.getSession().getAttribute("user")).getUsername());
+		}
 
 		int pageNum = 1;
 		if (ValidateCheck.isNotNull(MapUtils.getString(condition, "pageNum"))) { // 如果不为空的话改变当前页号
 			pageNum = MapUtils.getInteger(condition, "pageNum");
 		}
-		int pageSize = DefaultValue.PAGE_SIZE;
+		condition.put("pageNum",pageNum-1);
 
-		//来自前台请求不加条件
-		String requestFrom = "seeker";
-		if(requestFrom.equals(MapUtils.getString(condition,"from"))){
-			pageSize = 15;
-			condition.remove("username");
-
-		}
-
+		int pageSize = DefaultValue.SEEKER_USER.equals(usertype)?10:DefaultValue.PAGE_SIZE;
 		if (ValidateCheck.isNotNull(MapUtils.getString(condition, "pageSize"))) { // 如果不为空的话改变当前页大小
 			pageSize = MapUtils.getInteger(condition, "pageSize");
 		}
-		condition.put("pageNum",pageNum-1);
 		condition.put("pageSize",pageSize);
 
 		Page<Job> messages = null;

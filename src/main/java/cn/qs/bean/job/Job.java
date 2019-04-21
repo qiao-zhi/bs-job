@@ -13,7 +13,7 @@ public class Job {
     @Id
     private String id;
     private String username; //所属公司账号
-    private String fullname;//所属工程名称
+    private String fullname;//所属公司名称
 
     private String jobname;//岗位名称
     private String description;//岗位描述

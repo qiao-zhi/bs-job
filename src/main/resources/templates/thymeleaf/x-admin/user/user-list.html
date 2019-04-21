@@ -18,7 +18,7 @@
     <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/PublicFunctions.js'}"></script>
     <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/user_list.js'}"></script>
     
-    <span th:if="${session.user.username} eq 'admin'">
+    <span th:if="${session.user.usertype} eq '1'">
     	<script>
     		var admin = true;
     	</script>
@@ -48,7 +48,7 @@
         </form>
       </div>
       <xblock>
-     	 <span th:if="${session.user.username} eq 'admin'">
+     	 <span th:if="${session.user.usertype} eq '1'">
        		 <button class="layui-btn" onclick="x_admin_show('添加用户','./user-add.html',600,400)"><i class="layui-icon"></i>添加</button>
         </span>
         <span class="x-right" style="line-height:40px">用户列表</span>

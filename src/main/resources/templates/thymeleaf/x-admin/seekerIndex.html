@@ -44,16 +44,19 @@
 <!-- 中部开始 -->
 <!-- 右侧主体开始 -->
 <div class="content" style="width: 100%;">
+    <div class="layui-row" style="margin: 10px 10px -20px;">
+        <form class="layui-form layui-col-md12 x-so" id="queryUserForm">
+            <!--隐藏当前页和页号-->
+            <input type="hidden" name="pageNum"/>
+            <input type="hidden" name="pageSize"/>
+            <input type="text" name="jobname"  placeholder="请输入岗位名称" autocomplete="off" class="layui-input"/>
+            <input type="text" name="fullname"  placeholder="请输入企业名称" autocomplete="off" class="layui-input"/>
+            <button class="layui-btn" type="button" onclick="queryUsersFY()"><i class="layui-icon">&#xe615;</i></button>
+            <button class="layui-btn layui-btn-normal" type="button" onclick='clearQueryCondition(this)' title="点击重置查询条件"><i class="layui-icon">&#xe639;</i></button>
+        </form>
+    </div>
 
     <div class="x-body">
-        <div class="layui-row">
-            <form class="layui-form layui-col-md12 x-so" id="queryUserForm">
-                <!--隐藏当前页和页号-->
-                <input type="hidden" name="pageNum"/>
-                <input type="hidden" name="pageNum"/>
-                <input type="hidden" name="from" value="seeker"/>
-            </form>
-        </div>
         <table class="layui-table">
             <thead>
             <tr>

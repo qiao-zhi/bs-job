@@ -33,7 +33,12 @@ public class UserController {
 	}
 
 	@RequestMapping("/user-add")
-	public String user_add() {
+	public String user_add(String from,ModelMap map) {
+		String fromRegister = "register";
+		if(fromRegister.equals(from)){
+			map.put("from",from);
+		}
+
 		return "user/user-add";
 	}
 
